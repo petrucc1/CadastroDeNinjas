@@ -25,7 +25,7 @@ public class MissoesController {
     }
 
     // Deletar uma missão (DELETE)
-    @DeleteMapping("/deletar{id}")
+    @DeleteMapping("/deletar/{id}")
     public String deletarMissao() {
         return "Missão deletada!";
     }
