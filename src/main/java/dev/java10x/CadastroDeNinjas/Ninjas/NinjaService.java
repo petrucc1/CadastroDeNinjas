@@ -29,4 +29,9 @@ public class NinjaService {
         Optional<NinjaModel> ninja = ninjaRepository.findById(id);
         return ninja.orElse(null);
     }
+
+    // Deletar um ninja por ID (DELETE) - Precisa ser um método void
+    public void deletarNinja(Long id) {
+        ninjaRepository.deleteById(id);
+    }
 }
