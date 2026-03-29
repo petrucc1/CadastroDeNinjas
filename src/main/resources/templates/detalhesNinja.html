@@ -1,10 +1,186 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detalhes do Ninja</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #f1f5f9;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #f97316;
+            text-shadow: 0 0 10px rgba(249, 115, 22, 0.6);
+        }
+
+        .card {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #020617;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .ninja-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .ninja-header img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 12px;
+            border: 3px solid #f97316;
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.6);
+            margin-bottom: 15px;
+        }
+
+        .ninja-header h2 {
+            font-size: 24px;
+            color: #f97316;
+        }
+
+        .info {
+            margin-top: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #f97316;
+        }
+
+        .value {
+            color: #e2e8f0;
+        }
+
+        .missoes {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+        }
+
+        .missoes h3 {
+            margin-bottom: 10px;
+            color: #f97316;
+        }
+
+        .missao-item {
+            padding: 10px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .missao-item:last-child {
+            border-bottom: none;
+        }
+
+        .btn-voltar {
+            display: block;
+            margin-top: 25px;
+            text-align: center;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #f97316;
+            border: 2px solid #f97316;
+            transition: all 0.3s ease;
+        }
+
+        .btn-voltar:hover {
+            background-color: #f97316;
+            color: white;
+            box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 20px;
+            }
+
+            .info-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-$END$
+
+<h1>Detalhes do Ninja</h1>
+
+<div class="card">
+
+    <div class="ninja-header">
+        <img th:src="@{${ninja.imgUrl}}" alt="Imagem do Ninja">
+        <h2 th:text="${ninja.nome}"></h2>
+    </div>
+
+    <div class="info">
+        <div class="info-item">
+            <span class="label">E-mail:</span>
+            <span class="value" th:text="${ninja.email}"></span>
+        </div>
+
+        <div class="info-item">
+            <span class="label">Idade:</span>
+            <span class="value" th:text="${ninja.idade}"></span>
+        </div>
+
+        <div class="info-item">
+            <span class="label">Ranking:</span>
+            <span class="value" th:text="${ninja.ranking}"></span>
+        </div>
+    </div>
+
+    <div class="missoes">
+        <h3>Missões</h3>
+
+        <div th:if="${ninja.missoes}">
+            <div class="missao-item">
+                <strong>Nome:</strong>
+                <span th:text="${ninja.missoes.nome}"></span>
+            </div>
+            <div class="missao-item">
+                <strong>Dificuldade:</strong>
+                <span th:text="${ninja.missoes.dificuldade}"></span>
+            </div>
+        </div>
+
+        <div th:if="${ninja.missoes == null}">
+            Esse ninja não possui missões atribuídas.
+        </div>
+    </div>
+
+    <a th:href="@{/ninjas/ui/todos}" class="btn-voltar">
+        ⬅ Voltar para a Tabela de Ninjas
+    </a>
+
+</div>
+
 </body>
 </html>
