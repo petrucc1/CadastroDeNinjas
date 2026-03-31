@@ -2,6 +2,10 @@
 
 API e interface web para cadastro de ninjas e suas missões, desenvolvida com Spring Boot.
 
+## Status do projeto
+
+🚧 Em andamento: este projeto está sendo desenvolvido e ainda receberá novas funcionalidades e melhorias.
+
 ## Objetivo do projeto
 
 Este projeto demonstra uma aplicação Java com:
